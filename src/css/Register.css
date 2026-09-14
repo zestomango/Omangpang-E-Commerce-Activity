@@ -3,8 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #1b2838;
-  background: radial-gradient(ellipse at top, #2a475e 0%, #1b2838 100%);
+  background: linear-gradient(to bottom right, #ffffff 0%, #cfd8dc 100%);
   padding: 2rem;
   font-family: var(--sans, 'Inter', 'Motiva Sans', sans-serif);
   box-sizing: border-box;

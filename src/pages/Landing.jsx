@@ -33,18 +33,17 @@ const Landing = () => {
     "Casual",
   ];
 
-
-
   return (
     <div
       style={{
         padding: "3rem 2rem",
         color: "#c6d4df",
         minHeight: "calc(100vh - 72px)",
-        background: "#1b2838",
+        background:
+          "linear-gradient(to bottom right, #ffffff 0%, #cfd8dc 100%)",
       }}
     >
-      <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
+      <div style={{ width: "100%" }}>
         <div style={{ display: "flex", gap: "2rem", alignItems: "stretch" }}>
           <div
             style={{
@@ -128,7 +127,7 @@ const Landing = () => {
                   padding: "1rem 1.5rem",
                   border: "1px solid #171a21",
                   borderRadius: "4px",
-                  background: "#323f4c",
+                  background: "#171a21",
                   color: "#ffffff",
                   fontSize: "1.1rem",
                   outline: "none",
@@ -144,7 +143,7 @@ const Landing = () => {
                 onBlur={(e) => {
                   e.target.style.boxShadow = "inset 0 2px 4px rgba(0,0,0,0.2)";
                   e.target.style.borderColor = "#171a21";
-                  e.target.style.background = "#323f4c";
+                  e.target.style.background = "#171a21";
                 }}
               />
 
@@ -164,12 +163,10 @@ const Landing = () => {
                   textTransform: "uppercase",
                   letterSpacing: "1px",
                 }}
-
                 onMouseOver={(e) =>
                   (e.target.style.background =
                     "linear-gradient(135deg, #3bb3eb 0%, #227ca8 100%)")
                 }
-
                 onMouseOut={(e) =>
                   (e.target.style.background =
                     "linear-gradient(135deg, #2796c9 0%, #1b6389 100%)")
@@ -183,23 +180,23 @@ const Landing = () => {
               style={{
                 flex: 1,
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+                gridTemplateColumns: "repeat(5, 1fr)",
                 gap: "1.5rem",
               }}
             >
-
               {mockGames.map((game) => (
                 <div
                   key={game.id}
                   onClick={() => navigate(`/view-game/${game.id}`)}
                   style={{
-                    background: "rgba(0,0,0,0.2)",
+                    background: "#171a21",
                     boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
                     transition: "transform 0.2s ease, box-shadow 0.2s ease",
                     cursor: "pointer",
                     display: "flex",
                     flexDirection: "column",
-                    minHeight: "320px",
+                    height: "320px",
+                    overflow: "hidden",
                   }}
                 >
                   <img
@@ -207,7 +204,8 @@ const Landing = () => {
                     alt={game.title}
                     style={{
                       width: "100%",
-                      height: "auto",
+                      aspectRatio: "16 / 9",
+                      objectFit: "cover",
                       display: "block",
                     }}
                   />
@@ -217,6 +215,7 @@ const Landing = () => {
                       flex: 1,
                       display: "flex",
                       flexDirection: "column",
+                      minWidth: 0,
                     }}
                   >
                     <h4
