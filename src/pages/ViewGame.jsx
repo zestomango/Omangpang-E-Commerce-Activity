@@ -236,7 +236,7 @@ const ViewGame = () => {
             }}
           >
             ★★★★☆{" "}
-            <span style={{ color: "#8f98a0", fontSize: "0.9rem" }}>
+            <span style={{ color: "#ffffffff", fontSize: "0.9rem" }}>
               {gameData.reviews}
             </span>
           </div>
@@ -261,7 +261,7 @@ const ViewGame = () => {
             style={{
               display: "flex",
               gap: "1rem",
-              color: "#8f98a0",
+              color: "#fafafaff",
               fontSize: "0.85rem",
               marginBottom: "1.5rem",
             }}
@@ -279,7 +279,7 @@ const ViewGame = () => {
 
           <p
             style={{
-              color: "#c6d4df",
+              color: "#ffffffff",
               lineHeight: "1.6",
               fontSize: "0.95rem",
               marginBottom: "1rem",

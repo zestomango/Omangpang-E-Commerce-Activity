@@ -78,10 +78,16 @@ const Checkout = () => {
                             {userData?.email || 'N/A'}
                         </div>
                     </div>
-                    <div className="checkout-field" style={{ marginBottom: 0 }}>
+                    <div className="checkout-field">
                         <span className="checkout-label">Address:</span>
                         <div className="checkout-value" style={{ color: '#ffffff', textTransform: 'none' }}>
                             {userData?.address || 'N/A'}
+                        </div>
+                    </div>
+                    <div className="checkout-field" style={{ marginBottom: 0 }}>
+                        <span className="checkout-label">Phone:</span>
+                        <div className="checkout-value" style={{ color: '#ffffff', textTransform: 'none' }}>
+                            {userData?.phone || 'N/A'}
                         </div>
                     </div>
                 </div>

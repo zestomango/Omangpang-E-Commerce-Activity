@@ -13,8 +13,19 @@ const Landing = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Searching for:", searchQuery, "Categories:", selectedGenres);
   };
+
+  const filteredGames = mockGames.filter((game) => {
+    const searchLower = searchQuery.toLowerCase();
+    const matchesSearch = 
+      game.title.toLowerCase().includes(searchLower) ||
+      game.genre.toLowerCase().includes(searchLower);
+
+    const activeGenres = Object.keys(selectedGenres).filter(g => selectedGenres[g]);
+    const matchesGenre = activeGenres.length === 0 || activeGenres.some(g => game.genre.includes(g));
+
+    return matchesSearch && matchesGenre;
+  });
 
   const handleGenreChange = (e) => {
     setSelectedGenres({
@@ -44,7 +55,7 @@ const Landing = () => {
       }}
     >
       <div style={{ width: "100%" }}>
-        <div style={{ display: "flex", gap: "2rem", alignItems: "stretch" }}>
+        <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
           <div
             style={{
               width: "250px",
@@ -184,7 +195,8 @@ const Landing = () => {
                 gap: "1.5rem",
               }}
             >
-              {mockGames.map((game) => (
+              {filteredGames.length > 0 ? (
+                filteredGames.map((game) => (
                 <div
                   key={game.id}
                   onClick={() => navigate(`/view-game/${game.id}`)}
@@ -232,7 +244,7 @@ const Landing = () => {
                     </h4>
                     <div
                       style={{
-                        color: "#8f98a0",
+                        color: "#ffffffff",
                         fontSize: "0.85rem",
                         marginBottom: "1rem",
                         flex: 1,
@@ -253,7 +265,12 @@ const Landing = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              ))
+              ) : (
+                <div style={{ color: "#020202ff", gridColumn: "1 / -1", textAlign: "center", padding: "2rem" }}>
+                  No games found matching your search.
+                </div>
+              )}
             </div>
           </div>
         </div>

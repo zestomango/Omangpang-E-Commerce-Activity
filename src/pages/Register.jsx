@@ -11,13 +11,18 @@ const Register = () => {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     address: "",
     password: "",
     confirmPassword: "",
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    let value = e.target.value;
+    if (e.target.name === "phone") {
+      value = value.replace(/\D/g, "");
+    }
+    setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleSubmit = (e) => {
@@ -87,6 +92,23 @@ const Register = () => {
               name="email"
               placeholder="example@gmail.com"
               value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              minLength={11}
+              maxLength={15}
+              name="phone"
+              placeholder="09123456789"
+              pattern="[0-9]{11,15}"
+              title="Please enter at least 11 digits"
+              value={formData.phone}
               onChange={handleChange}
               required
             />

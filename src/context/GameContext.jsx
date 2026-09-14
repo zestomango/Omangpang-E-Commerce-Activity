@@ -190,7 +190,15 @@ export const GameProvider = ({ children }) => {
     };
 
     const removeFromCart = (gameId) => {
-        setCartItems((currentItems) => currentItems.filter(item => item.id !== gameId));
+        setCartItems((currentItems) => {
+            const existingItem = currentItems.find(item => item.id === gameId);
+            if (existingItem && existingItem.quantity > 1) {
+                return currentItems.map(item => 
+                    item.id === gameId ? { ...item, quantity: item.quantity - 1 } : item
+                );
+            }
+            return currentItems.filter(item => item.id !== gameId);
+        });
     };
 
     const clearCart = () => {
